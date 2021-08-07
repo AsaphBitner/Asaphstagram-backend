@@ -1,0 +1,72 @@
+[
+  {
+    "_id": "hJDVq",
+    "fullname": "Muki Fasd",
+    "username": "muki",
+    "password": "muki1",
+    "balance": 100
+  },
+  {
+    "_id": "guC05",
+    "fullname": "Muki Fasd",
+    "username": "muki",
+    "balance": 100
+  },
+  {
+    "_id": "jO0OB",
+    "fullname": "Muki Fasd",
+    "username": "muki",
+    "password": "muki1",
+    "balance": 100
+  },
+  {
+    "_id": "Qwr06",
+    "fullname": "Muki Fasd",
+    "username": "muki",
+    "password": "muki1",
+    "balance": 100
+  },
+  {
+    "_id": "6Np0Z",
+    "fullname": "Muki Fasd",
+    "username": "mukifbgfgbgbbf",
+    "password": "fgnffb",
+    "balance": 100
+  },
+  {
+    "_id": "XWPq8",
+    "fullname": "baba g",
+    "username": "baba",
+    "password": "baba1",
+    "balance": 100
+  },
+  {
+    "_id": "MW87x",
+    "fullname": "zaza g",
+    "username": "zaza",
+    "password": "zaza1",
+    "balance": 100
+  },
+  {
+    "_id": "IovW6",
+    "fullname": "Abram Bc",
+    "username": "abc",
+    "password": "abc",
+    "balance": 100
+  },
+  {
+    "_id": "F2Lfh",
+    "fullname": "Muki Baboka",
+    "username": "muki",
+    "password": "muki1",
+    "balance": 100
+  },
+  {
+    "_id": "u101",
+    "fullname": "Puki Balalla",
+    "username": "puki",
+    "password": "puki1",
+    "isAdmin": true,
+    "balance": 100
+  }
+]

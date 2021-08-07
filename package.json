@@ -1,0 +1,17 @@
+{
+  "name": "node-server",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "nodemon --ignore \"./data\" server.js",
+    "baba": "echo BABA",
+    "listFiles": "dir",
+    "pingGoogle": "ping google.com"
+  },
+  "author": "Me",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2"
+  }
+}
