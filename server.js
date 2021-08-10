@@ -3,10 +3,14 @@ const cookieParser = require('cookie-parser')
 const session = require('express-session')
 
 
-const userService = require('./services/user-service')
+// const userService = require('./services/user-service')
 const carService = require('./services/car-service')
+const storyService = require('./services/story-service')
+const userService = require('./services/user-service')
 const app = express()
 const port = 3000
+
+
 
 // Express App Configuration
 // We ask Express.js to serve static files from the 'public' folder
@@ -15,12 +19,17 @@ app.use(cookieParser())
 app.use(express.json())
 
 
-app.use(session({
-    secret: 'some secret token',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }
- }))
+
+
+    storyService.testing()
+
+
+// app.use(session({
+//     secret: 'some secret token',
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: { secure: false }
+//  }))
  
 
 // app.get('/puki', (req, res) => {
@@ -33,13 +42,13 @@ app.use(session({
 // app.get('/nono', (req, res) => res.redirect('/puki'))
 
  
-app.post('/saveImg', (req, res) => {
-console.log(req)
-res.json({id: 11111,
-          name: 'Homer Simpson',
-        })
-} 
-)
+// app.post('/saveImg', (req, res) => {
+// console.log(req)
+// res.json({id: 11111,
+//           name: 'Homer Simpson',
+//         })
+// } 
+// )
 
 
 
