@@ -1,4 +1,3 @@
-
 const dbService = require('./db.service')
 const ObjectId = require('mongodb').ObjectId
 const userCollectionName = 'user';

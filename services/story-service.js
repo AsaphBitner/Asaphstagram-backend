@@ -1,27 +1,41 @@
 
+// import {usersToUpload} from '1Users-List.js'
+// const usersArray = require('./1Users-List.js')
 const dbService = require('./db.service')
 const ObjectId = require('mongodb').ObjectId
-const storyCollectionName = 'posts';
+const storyCollectionName = 'users';
 
 module.exports = {
     getStoryById,
     remove,
     update,
     create,
-    testing
+    // testing,
+    uploadUsers,
 }
 
 // (function(){console.log('TESTING OT SEE IF THIS WORKS')})()
 
-async function testing(){
-let x = {
-    user: 'HomerS',
-    text: 'Hello! Testing testing',
-    time: Date.now()-100,
-} 
-let y = await create(x)
-console.log(y, 'SUCCESS')
+// async function testing(){
+// let x = {
+//     user: 'HomerS',
+//     text: 'Hello! Testing testing',
+//     time: Date.now()-100,
+// } 
+// let y = await create(x)
+// console.log(y, 'SUCCESS')
+// }
+
+async function uploadUsers(usersToUpload){
+    // console.log(usersToUpload)
+    for (let i=0; i<usersToUpload.length; i++){
+        const x = await create(usersToUpload[i])
+    }
+// const t = usersArray
+// console.log(t)
+console.log(x, 'SUCCESS!!!')
 }
+
 
 async function create(story) {
     try {
