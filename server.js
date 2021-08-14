@@ -2,7 +2,7 @@
 // import {usersToUpload} from '1Users-List.js'
 const express = require('express')
 const cookieParser = require('cookie-parser')
-const session = require('express-session')
+// const session = require('express-session')
 
 
 // const userService = require('./services/user-service')
@@ -24,9 +24,9 @@ app.use(express.json())
 
 
 
-app.get('userId',(req, res) => {
+app.get('/user',async (req, res) => {
 try{
-    let user = await userService.getUserById(req.body)
+    let user = await userService.getUserById(req.query)
 res.send(user)
 }
 catch (err) {
@@ -37,9 +37,9 @@ res.status(401).send('Sorry, error')
 })
 
 
-app.get('username',(req, res) => {
+app.get('/username', async (req, res) => {
     try{
-        let user = await userService.getUserByName(req.body)
+        let user = await userService.getUserByName(req.query)
     res.send(user)
     }
     catch (err) {
@@ -49,9 +49,9 @@ app.get('username',(req, res) => {
 
 })
 
-app.get('userAll',(req, res) => {
+app.get('/userAll', async (req, res) => {
     try{
-        let user = await userService.getall()
+        let user = await userService.getAll()
     res.send(user)
     }
     catch (err) {
@@ -61,7 +61,7 @@ app.get('userAll',(req, res) => {
     
     })
 
-app.post('user',(req, res) => {
+app.post('/user', async (req, res) => {
     let user = req.body
     try{
     newUser = await userService.create(user)    
@@ -74,7 +74,7 @@ res.status(401).send('Sorry, error')
     
 })
 
-app.put('user',(req, res) => {
+app.put('/user', async (req, res) => {
     try{
         let user = await userService.update(req.body)
     res.send(user)
@@ -86,7 +86,7 @@ res.status(401).send('Sorry, error')
     
 })
 
-app.delete('user',(req, res) => {
+app.delete('/user', async (req, res) => {
     try{
         let user = await userService.remove(req.body)
     res.send(user)
@@ -102,9 +102,9 @@ res.status(401).send('Sorry, error')
 //==================================================================
 
 
-app.get('story',(req, res) => {
+app.get('/story', async (req, res) => {
     try{
-        let story = await storyService.getUserByName(req.body)
+        let story = await storyService.getStoryById(req.query)
     res.send(story)
     }
     catch (err) {
@@ -114,9 +114,9 @@ app.get('story',(req, res) => {
 
 })
 
-app.get('storyAll',(req, res) => {
+app.get('/storyAll', async (req, res) => {
     try{
-        let story = await userService.getall()
+        let story = await storyService.getall()
     res.send(story)
     }
     catch (err) {
@@ -126,7 +126,7 @@ app.get('storyAll',(req, res) => {
     
     })
 
-app.post('story',(req, res) => {
+app.post('/story', async (req, res) => {
     let story = req.body
     try{
     newStory = await storyService.create(story)    
@@ -139,7 +139,7 @@ res.status(401).send('Sorry, error')
     
 })
 
-app.put('story',(req, res) => {
+app.put('/story', async (req, res) => {
     try{
         let story = await storyService.update(req.body)
     res.send(story)
@@ -151,7 +151,7 @@ res.status(401).send('Sorry, error')
     
 })
 
-app.delete('story',(req, res) => {
+app.delete('/story', async (req, res) => {
     try{
         let story = await storyService.remove(req.body)
     res.send(story)

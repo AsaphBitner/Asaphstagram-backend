@@ -7,7 +7,7 @@ module.exports = {
     getUserById,
     remove,
     update,
-    getAllUsers,
+    getAll,
     create,
 }
 
@@ -35,7 +35,7 @@ async function getUserById(userId) {
 }
 
 
-async function getAllUsers(){
+async function getAll(){
     try {
         const collection = await dbService.getCollection(userCollectionName)
         return collection.findOne()
