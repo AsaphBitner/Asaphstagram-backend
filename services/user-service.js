@@ -1,6 +1,6 @@
 const dbService = require('./db.service')
 const ObjectId = require('mongodb').ObjectId
-const userCollectionName = 'user';
+const userCollectionName = 'users';
 
 module.exports = {
     getUserByName,
@@ -16,6 +16,7 @@ async function getUserByName(username) {
     try {
         const collection = await dbService.getCollection(userCollectionName)
         const user = await collection.findOne(criteria)
+        delete user.password
         return user;
     } catch (err) {
         console.log('ERROR: cannot find user')
@@ -27,6 +28,7 @@ async function getUserById(userId) {
     try {
         const collection = await dbService.getCollection(userCollectionName)
         const user = await collection.findOne({ _id: ObjectId(userId) })
+        delete user.password
         return user
     } catch (err) {
         console.log(`ERROR: cannot find customer ${customerId}`)
@@ -37,8 +39,14 @@ async function getUserById(userId) {
 
 async function getAll(){
     try {
-        const collection = await dbService.getCollection(userCollectionName)
-        return collection.findOne()
+        const collection = await dbService.getCollection(userCollectionName)        
+        let allUsers = await collection.find().toArray()        
+        allUsers.forEach(element => {
+        delete element.password    
+        });
+        // console.log(allUsers)
+    
+        return (allUsers)
     } catch (err) {
         console.log(`ERROR: cannot find collection`)
         throw err

@@ -3,14 +3,14 @@
 // const usersArray = require('./1Users-List.js')
 const dbService = require('./db.service')
 const ObjectId = require('mongodb').ObjectId
-const storyCollectionName = 'stories';
+const storyCollectionName = 'posts';
 
 module.exports = {
     getStoryById,
     remove,
     update,
     create,
-    getAllStories,
+    getAll,
 }
 
 
@@ -52,10 +52,10 @@ async function getStoryById(storyId) {
     }
 }
 
-async function getAllStories(){
+async function getAll(){
     try {
         const collection = await dbService.getCollection(storyCollectionName)
-        let stories = collection.find()
+        let stories = await collection.find().toArray()        
         return stories
     } catch (err) {
         console.log(`ERROR: cannot find collection`)
@@ -74,8 +74,8 @@ async function update(story) {
         storyToUpdate.likedBy = story.likedBy.slice()
         storyToUpdate.comments = story.comments.slice()
 
-        await collection.updateOne({ _id: ObjectId(story._id) }, { $set: story })
-        return story
+        await collection.updateOne({ _id: ObjectId(storyToUpdate._id) }, { $set: storyToUpdate })
+        return storyToUpdate
     } catch (err) {
         console.log(`ERROR: cannot update story ${story._id}`)
         throw err

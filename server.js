@@ -51,8 +51,9 @@ app.get('/username', async (req, res) => {
 
 app.get('/userAll', async (req, res) => {
     try{
-        let user = await userService.getAll()
-    res.send(user)
+        let users = await userService.getAll()
+        // console.log('SERVER JS ', user)
+    res.send(users)
     }
     catch (err) {
         console.log('Error! ', err)
@@ -116,7 +117,7 @@ app.get('/story', async (req, res) => {
 
 app.get('/storyAll', async (req, res) => {
     try{
-        let story = await storyService.getall()
+        let story = await storyService.getAll()
     res.send(story)
     }
     catch (err) {
