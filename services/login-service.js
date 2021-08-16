@@ -1,6 +1,8 @@
 const dbService = require('./db.service')
 const ObjectId = require('mongodb').ObjectId
-const userCollectionName = 'users';
+const userCollectionName = 'loggedinuser';
+const userService = require('./services/user-service')
+
 
 module.exports = {
     getUserByName,
@@ -17,8 +19,7 @@ module.exports = {
 
 
 
-async function getUserByName(username) {
-    const criteria = {username: username}
+async function getLoggedInUser() {
     try {
         const collection = await dbService.getCollection(userCollectionName)
         const user = await collection.findOne(criteria)

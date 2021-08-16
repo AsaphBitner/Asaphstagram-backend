@@ -26,7 +26,6 @@ app.use(express.json())
 
 
 
-
 app.get('/user/:userId',async (req, res) => {
 try{
     let user = await userService.getUserById(req.params.userId)

@@ -14,20 +14,7 @@ module.exports = {
 }
 
 
-// async function sortPosts(usersToUpdate){
-// //    const x = usersToUpdate.sort((a,b)=> (a.createdAt < b.createdAt ? 1 : -1))
-//     // const x = postsToSort
-//     for (let i=0; i<usersToUpdate.length; i++){
-//     let x = await getStoryById((usersToUpdate[i]._id))
-//     x.ownedStories = usersToUpdate[i].ownedStories.slice()
-//     const y = await update(x)
-//     console.log(i, x.ownedStories)
-//     // console.log(postsToSort.length)
-//     }
 
-// // console.log(t)
-// // console.log(x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], 'SUCCESS!!!')
-// }
 
 
 async function create(story) {
