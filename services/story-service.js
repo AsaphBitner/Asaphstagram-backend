@@ -33,7 +33,10 @@ module.exports = {
 async function create(story) {
     try {
         const collection = await dbService.getCollection(storyCollectionName)
-        const storyWithMongoId = await collection.insertOne(story)
+        const confirmation = await collection.insertOne(story)
+        // console.log('IN SERVER: ', confirmation.insertedId)
+        const newStoryId = confirmation.insertedId.toString()
+        const storyWithMongoId = await getStoryById(newStoryId)
         return storyWithMongoId
     } catch (err) {
         console.log(`ERROR: cannot insert story`)
@@ -68,13 +71,14 @@ async function update(story) {
     try {
         // const storyId = story._id
         const collection = await dbService.getCollection(storyCollectionName)
-        let storyToUpdate = getStoryById(story._id)
+        let storyToUpdate = {} 
+        // getStoryById(story._id)
         storyToUpdate.text = story.text
         storyToUpdate.imgUrl = story.imgUrl
-        storyToUpdate.likedBy = story.likedBy.slice()
-        storyToUpdate.comments = story.comments.slice()
-
-        await collection.updateOne({ _id: ObjectId(storyToUpdate._id) }, { $set: storyToUpdate })
+        storyToUpdate.likedBy = story.likedBy
+        storyToUpdate.comments = story.comments
+        
+        await collection.updateOne({ _id: ObjectId(story._id) }, { $set: storyToUpdate })
         return storyToUpdate
     } catch (err) {
         console.log(`ERROR: cannot update story ${story._id}`)

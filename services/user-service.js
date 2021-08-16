@@ -71,15 +71,16 @@ async function update(user) {
     try {
         // const storyId = user._id
         const collection = await dbService.getCollection(userCollectionName)
-        let userToUpdate = await getUserById(user._id)
+        let userToUpdate = {}
+        // await getUserById(user._id)
         userToUpdate.profileText = user.profileText
-        userToUpdate.oldProfileImgs = user.oldProfileImgs.slice()
-        userToUpdate.following = user.following.slice()
-        userToUpdate.followers = user.followers.slice()
-        userToUpdate.ownedStories = user.ownedStories.slice()
+        userToUpdate.oldProfileImgs = user.oldProfileImgs
+        userToUpdate.following = user.following
+        userToUpdate.followers = user.followers
+        userToUpdate.ownedStories = user.ownedStories
         
         await collection.updateOne({ _id: ObjectId(user._id) }, { $set: userToUpdate })
-        return user
+        return userToUpdate
     } catch (err) {
         console.log(`ERROR: cannot update story ${user._id}`)
         throw err

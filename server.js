@@ -12,6 +12,9 @@ const userService = require('./services/user-service')
 const app = express()
 const port = 3000
 
+var cors = require('cors')
+app.use(cors())
+
 
 
 // Express App Configuration
@@ -24,9 +27,9 @@ app.use(express.json())
 
 
 
-app.get('/user',async (req, res) => {
+app.get('/user/:userId',async (req, res) => {
 try{
-    let user = await userService.getUserById(req.query)
+    let user = await userService.getUserById(req.params.userId)
 res.send(user)
 }
 catch (err) {
@@ -37,9 +40,9 @@ res.status(401).send('Sorry, error')
 })
 
 
-app.get('/username', async (req, res) => {
+app.get('/username/:name', async (req, res) => {
     try{
-        let user = await userService.getUserByName(req.query)
+        let user = await userService.getUserByName(req.params.name)
     res.send(user)
     }
     catch (err) {
@@ -89,7 +92,7 @@ res.status(401).send('Sorry, error')
 
 app.delete('/user', async (req, res) => {
     try{
-        let user = await userService.remove(req.body)
+        let user = await userService.remove(req.query)
     res.send(user)
     }
     catch (err) {
@@ -152,9 +155,9 @@ res.status(401).send('Sorry, error')
     
 })
 
-app.delete('/story', async (req, res) => {
+app.delete('/story/:storyId', async (req, res) => {
     try{
-        let story = await storyService.remove(req.body)
+        let story = await storyService.remove(req.params.storyId)
     res.send(story)
     }
     catch (err) {
