@@ -89,7 +89,7 @@ async function update(user) {
         await collection.updateOne({ _id: ObjectId(user._id) }, { $set: userToUpdate })
         return userToUpdate
     } catch (err) {
-        console.log(`ERROR: cannot update story ${user._id}`)
+        console.log(`ERROR: cannot update user ${user._id}`)
         throw err
     }
 }

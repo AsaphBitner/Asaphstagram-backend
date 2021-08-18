@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser')
 // const carService = require('./services/1OLDcar-service')
 const storyService = require('./services/story-service')
 const userService = require('./services/user-service')
+const loginService = require('./services/login-service')
 const app = express()
 const port = 3000
 
@@ -23,6 +24,19 @@ app.use(express.static('public'))
 app.use(cookieParser())
 app.use(express.json())
 
+
+app.post('/login', async (req, res) => {
+    try{
+    let loggedIn = await loginService.checkLogin(req.body)
+    console.log('!!!!!!!! ',loggedIn)
+    res.send(loggedIn)
+    }
+    catch (err) {
+        console.log('Error! ', err)
+    res.status(401).send('Sorry, error')
+    }
+    
+    })
 
 
 
