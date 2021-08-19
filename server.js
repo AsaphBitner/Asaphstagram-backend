@@ -28,7 +28,7 @@ app.use(express.json())
 app.post('/login', async (req, res) => {
     try{
     let loggedIn = await loginService.checkLogin(req.body)
-    console.log('!!!!!!!! ',loggedIn)
+    // console.log('!!!!!!!! ',loggedIn)
     res.send(loggedIn)
     }
     catch (err) {
@@ -342,11 +342,13 @@ res.status(401).send('Sorry, error')
 // })
 
 
-app.listen(port, () => {
-    console.log(`App listening at http://localhost:${port}`)
+// app.listen(port, () => {
+//     console.log(`App listening at http://localhost:${port}`)
+// })
+
+app.listen(process.env.PORT || port, () => {
+    console.log(`App listening at http://localhost:${process.env.PORT || port}`)
 })
-
-
 
 
 
