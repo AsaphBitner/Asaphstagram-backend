@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start-dev": "nodemon --ignore \"./data\" server.js",
-    "start": "node -server.js",
+    "start": "node server.js",
     "baba": "echo BABA",
     "listFiles": "dir",
     "pingGoogle": "ping google.com"
