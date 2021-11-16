@@ -117,24 +117,25 @@ res.status(401).send('Sorry, error')
 
 
 //==================================================================
+// app.get('/user/:userId',async (req, res) => {
+// 
 
-
-app.get('/story', async (req, res) => {
+app.get('/story/:storyId', async (req, res) => {
     try{
-        let story = await storyService.getStoryById(req.query)
-    res.send(story)
+        let story = await storyService.getStoryById(req.params.storyId)
+        res.send(story)
     }
     catch (err) {
         console.log('Error! ', err)
-    res.status(401).send('Sorry, error')
+        res.status(401).send('Sorry, error')
     }
 
 })
 
 app.get('/storyAll', async (req, res) => {
     try{
-        let story = await storyService.getAll()
-    res.send(story)
+        let stories = await storyService.getAll()
+    res.send(stories)
     }
     catch (err) {
         console.log('Error! ', err)

@@ -35,6 +35,7 @@ async function getStoryById(storyId) {
     try {
         const collection = await dbService.getCollection(storyCollectionName)
         const story = await collection.findOne({ _id: ObjectId(storyId) })
+        console.log('THIS IS IT! ', story)
         return story
     } catch (err) {
         console.log(`ERROR: cannot find story ${storyId}`)
