@@ -172,11 +172,11 @@ res.status(401).send('Sorry, error')
 app.delete('/story/:storyId', async (req, res) => {
     try{
         let story = await storyService.remove(req.params.storyId)
-    res.send(story)
+        res.send(story)
     }
     catch (err) {
         console.log('Error! ', err)
-res.status(401).send('Sorry, error')
+        res.status(401).send('Sorry, error')
     }
 })
 
