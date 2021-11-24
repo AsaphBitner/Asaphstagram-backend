@@ -11,7 +11,7 @@ const storyService = require('./services/story-service')
 const userService = require('./services/user-service')
 const loginService = require('./services/login-service')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 var cors = require('cors')
 app.use(cors())
@@ -182,8 +182,8 @@ app.delete('/story/:storyId', async (req, res) => {
 
 
 
-app.listen(process.env.PORT || port, () => {
-    console.log(`App listening at http://localhost:${process.env.PORT || port}`)
+app.listen(port, () => {
+    console.log(`App listening at http://localhost:${port}`)
 })
 
 
